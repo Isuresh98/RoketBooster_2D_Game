@@ -9,12 +9,15 @@ public class HelthBar : MonoBehaviour
 
     public Gradient ColorGradiyant;
     public Image Fill;
+
+    public ParticleSystem HelthVFX;
    
 
     // Start is called before the first frame update
     void Start()
     {
         SliderComponent = GetComponent<Slider>();
+
         
     }
 

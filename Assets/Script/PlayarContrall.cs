@@ -12,7 +12,10 @@ public class PlayarContrall : MonoBehaviour
     private float _rotetPower = 10f;
     [SerializeField]
     private float _boostHelth=100f;
-    
+
+    [SerializeField]
+    private float _particalDesroyTime = 2f;
+
 
     private AudioSource _boostSound;
     [SerializeField]
@@ -22,14 +25,21 @@ public class PlayarContrall : MonoBehaviour
 
     public HelthBar HelthBarScript;
 
+    public ParticleSystem HelthVFX;
+    public ParticleSystem BoosterVFX;
     // Start is called before the first frame update
     void Start()
     {
         _rBody = GetComponent<Rigidbody>();
         _boostSound = GetComponent<AudioSource>();
         HelthBarScript.MaxHelth(_boostHelth);
-       
-        
+        HelthVFX.Stop();
+        BoosterVFX.Stop();
+
+        //HelthVFX = ParticleSystem.FindObjectOfType("HelthFVX");
+       // HelthVFX = GameObject.FindWithTag("HelthFVX");
+
+
 
 
     }//Start
@@ -84,7 +94,7 @@ public class PlayarContrall : MonoBehaviour
             _rBody.AddRelativeForce(Vector3.up * _trusterPower);
 
             _boostHelth--;
-
+            BoosterVFX.Play();
 
             if (!_boostSound.isPlaying)
             {
@@ -95,6 +105,7 @@ public class PlayarContrall : MonoBehaviour
         else
         {
             _boostSound.Stop();
+            BoosterVFX.Stop();
         }
     }//BoosterInput
 
@@ -103,9 +114,11 @@ public class PlayarContrall : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Helth"))
         {
-            
+            HelthVFX.Play();
             _boostHelth += 100f;
             Destroy(GameObject.FindWithTag("Helth"));
+            Destroy(GameObject.FindWithTag("HelthFVX"), _particalDesroyTime);
+
         }
         if (other.gameObject.CompareTag("Finish"))
         {
