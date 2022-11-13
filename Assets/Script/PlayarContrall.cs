@@ -126,6 +126,7 @@ public class PlayarContrall : MonoBehaviour
         {
             HelthVFX.Play();
             _boostHelth += 100f;
+            _boosterTimer = 50f;
             Destroy(GameObject.FindWithTag("Helth"));
             Destroy(GameObject.FindWithTag("HelthFVX"), _particalDesroyTime);
 
