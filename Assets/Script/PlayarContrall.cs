@@ -35,9 +35,10 @@ public class PlayarContrall : MonoBehaviour
         HelthBarScript.MaxHelth(_boostHelth);
         HelthVFX.Stop();
         BoosterVFX.Stop();
-
+        _boosterTimer = 50f;
+    
         //HelthVFX = ParticleSystem.FindObjectOfType("HelthFVX");
-       // HelthVFX = GameObject.FindWithTag("HelthFVX");
+        // HelthVFX = GameObject.FindWithTag("HelthFVX");
 
 
 
@@ -49,7 +50,7 @@ public class PlayarContrall : MonoBehaviour
     {
         
 
-        _boosterTimer -= Time.deltaTime;
+        //_boosterTimer -= Time.deltaTime;
         
 
         HelthBarScript.SetHelth(_boostHelth);
@@ -57,15 +58,24 @@ public class PlayarContrall : MonoBehaviour
         BoosterInput();
         RotetInput();
         HelthCounter();
+        
 
     }//Update
 
     private void HelthCounter()
     {
+        
         if (_boostHelth == 0)
         {
+            Timer();
             _boostHelth = 0;
-            print("game over!");
+
+           
+            if (_boosterTimer == 0)
+            {
+                print("game over!");
+            }
+           
         }
     }
 
@@ -123,7 +133,7 @@ public class PlayarContrall : MonoBehaviour
         if (other.gameObject.CompareTag("Finish"))
         {
             print("Game Winnig!");
-            _boostHelth = 0f;
+           
         }
         if (other.gameObject.CompareTag("Ball"))
         {
@@ -131,4 +141,16 @@ public class PlayarContrall : MonoBehaviour
         }
 
     }//OnTriggerEnter
-}
+
+
+    private void Timer()
+    {
+       
+        if (_boostHelth == 0)
+        {
+            
+            _boosterTimer--;
+        }
+        
+    }
+}//Class
