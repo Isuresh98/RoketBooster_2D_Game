@@ -19,8 +19,8 @@ public class PlayarContrall : MonoBehaviour
 
     private AudioSource _boostSound;
     [SerializeField]
-    private float _boosterTimer;
-    [SerializeField]
+  
+    
     
 
     public HelthBar HelthBarScript;
@@ -28,6 +28,10 @@ public class PlayarContrall : MonoBehaviour
     public ParticleSystem HelthVFX;
     public ParticleSystem BoosterVFX;
     // Start is called before the first frame update
+
+    enum Stats { ALIVE,DYING,TRANCENDING}
+    Stats states = Stats.ALIVE;
+
     void Start()
     {
         _rBody = GetComponent<Rigidbody>();
@@ -35,10 +39,9 @@ public class PlayarContrall : MonoBehaviour
         HelthBarScript.MaxHelth(_boostHelth);
         HelthVFX.Stop();
         BoosterVFX.Stop();
-        _boosterTimer = 50f;
+       
     
-        //HelthVFX = ParticleSystem.FindObjectOfType("HelthFVX");
-        // HelthVFX = GameObject.FindWithTag("HelthFVX");
+      
 
 
 
@@ -50,14 +53,19 @@ public class PlayarContrall : MonoBehaviour
     {
         
 
-        //_boosterTimer -= Time.deltaTime;
+        
         
 
         HelthBarScript.SetHelth(_boostHelth);
+        if (states == Stats.ALIVE)
+        {
+            BoosterInput();
+            RotetInput();
+        }
+        
+      
 
-        BoosterInput();
-        RotetInput();
-        HelthCounter();
+        Invoke("HelthCounter", 12f);
         
 
     }//Update
@@ -67,15 +75,14 @@ public class PlayarContrall : MonoBehaviour
         
         if (_boostHelth == 0)
         {
-            Timer();
+           
             _boostHelth = 0;
+            states = Stats.DYING;
+            print("Game Over!");
+            _boostSound.Stop();
+            BoosterVFX.Stop();
 
-           
-            if (_boosterTimer == 0)
-            {
-                print("game over!");
-            }
-           
+
         }
     }
 
@@ -126,14 +133,18 @@ public class PlayarContrall : MonoBehaviour
         {
             HelthVFX.Play();
             _boostHelth += 100f;
-            _boosterTimer = 50f;
+            
             Destroy(GameObject.FindWithTag("Helth"));
             Destroy(GameObject.FindWithTag("HelthFVX"), _particalDesroyTime);
+            
 
         }
         if (other.gameObject.CompareTag("Finish"))
         {
             print("Game Winnig!");
+            _boostSound.Stop();
+            BoosterVFX.Stop();
+            states = Stats.TRANCENDING;
            
         }
         if (other.gameObject.CompareTag("Ball"))
@@ -144,14 +155,5 @@ public class PlayarContrall : MonoBehaviour
     }//OnTriggerEnter
 
 
-    private void Timer()
-    {
-       
-        if (_boostHelth == 0)
-        {
-            
-            _boosterTimer--;
-        }
-        
-    }
+   
 }//Class
