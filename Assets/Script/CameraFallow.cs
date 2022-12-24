@@ -15,6 +15,7 @@ public class CameraFallow : MonoBehaviour
     void Start()
     {
         taget = GameObject.FindWithTag("Player");
+        
     }
 
     // Update is called once per frame
