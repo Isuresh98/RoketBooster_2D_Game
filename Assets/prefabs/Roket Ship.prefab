@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544769590}
-  m_LocalRotation: {x: 0.25299817, y: 0, z: 0, w: 0.9674668}
-  m_LocalPosition: {x: 0.39, y: 2.34, z: -4.82}
+  m_LocalRotation: {x: 0.67055523, y: -0, z: -0, w: 0.7418596}
+  m_LocalPosition: {x: -0.08, y: 6.79, z: -1.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1706978784329683883}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 29.31, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 84.22, y: 0, z: 0}
 --- !u!108 &1544769592
 Light:
   m_ObjectHideFlags: 0
@@ -45,7 +45,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 18.12
   m_Range: 9
-  m_SpotAngle: 179
+  m_SpotAngle: 61
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -156,11 +156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cf33d5f270eab428676203f43d34b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trusterPower: 40
+  _trusterPower: 60
   _rotetPower: 200
   _boostHelth: 200
   _particalDesroyTime: 2
-  _boosterTimer: 0
   HelthBarScript: {fileID: 0}
   HelthVFX: {fileID: 5328057541418088184}
   BoosterVFX: {fileID: 7080567321015983407}
@@ -948,7 +947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4317874184272834, guid: bccc7a794e75b2a44a4b0dac69160b7b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.77
+      value: -1.66
       objectReference: {fileID: 0}
     - target: {fileID: 4317874184272834, guid: bccc7a794e75b2a44a4b0dac69160b7b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -985,17 +984,27 @@ PrefabInstance:
     - target: {fileID: 198421077076039884, guid: bccc7a794e75b2a44a4b0dac69160b7b,
         type: 3}
       propertyPath: lengthInSec
-      value: 8.76
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 198421077076039884, guid: bccc7a794e75b2a44a4b0dac69160b7b,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 198421077076039884, guid: bccc7a794e75b2a44a4b0dac69160b7b,
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 0.81
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 198421077076039884, guid: bccc7a794e75b2a44a4b0dac69160b7b,
+        type: 3}
+      propertyPath: InitialModule.startRotation.scalar
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198421077076039884, guid: bccc7a794e75b2a44a4b0dac69160b7b,
         type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
-      value: 1.2
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 199086891411180386, guid: bccc7a794e75b2a44a4b0dac69160b7b,
         type: 3}
