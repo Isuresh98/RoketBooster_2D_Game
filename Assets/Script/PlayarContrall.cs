@@ -124,7 +124,7 @@ public class PlayarContrall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Helth"))
+       /* if (other.gameObject.CompareTag("Helth"))
         {
             HelthVFX.Play();
             _boostHelth += 100f;
@@ -134,7 +134,8 @@ public class PlayarContrall : MonoBehaviour
         else
         {
             HelthVFX.Stop();
-        }
+        }*/
+
         if (other.gameObject.CompareTag("Finish"))
         {
             print("Game Winnig!");
@@ -155,6 +156,17 @@ public class PlayarContrall : MonoBehaviour
         if (collision.gameObject.CompareTag("point"))
         {
             _boostHelth -= 10;
+        }
+        if (collision.gameObject.CompareTag("Helth"))
+        {
+            HelthVFX.Play();
+            _boostHelth += 100f;
+
+
+        }
+        else
+        {
+            HelthVFX.Stop();
         }
     }
 
