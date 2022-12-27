@@ -13,8 +13,7 @@ public class PlayarContrall : MonoBehaviour
     [SerializeField]
     private float _boostHelth=100f;
 
-    [SerializeField]
-    private float _particalDesroyTime = 2f;
+   
 
 
     private AudioSource _boostSound;
@@ -39,6 +38,7 @@ public class PlayarContrall : MonoBehaviour
         HelthBarScript.MaxHelth(_boostHelth);
         HelthVFX.Stop();
         BoosterVFX.Stop();
+       
        
     
       
@@ -133,11 +133,12 @@ public class PlayarContrall : MonoBehaviour
         {
             HelthVFX.Play();
             _boostHelth += 100f;
-            
-            Destroy(GameObject.FindWithTag("Helth"));
-            Destroy(GameObject.FindWithTag("HelthFVX"), _particalDesroyTime);
-            
 
+
+        }
+        else
+        {
+            HelthVFX.Stop();
         }
         if (other.gameObject.CompareTag("Finish"))
         {
