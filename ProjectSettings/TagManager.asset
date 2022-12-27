@@ -7,6 +7,10 @@ TagManager:
   - Shootable
   - HelthFVX
   - BoosterVFX
+  - HelthBar
+  - Ball
+  - Helth
+  - point
   layers:
   - Default
   - TransparentFX

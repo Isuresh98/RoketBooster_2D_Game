@@ -13,6 +13,7 @@ public class PlayarContrall : MonoBehaviour
     [SerializeField]
     private float _boostHelth=100f;
 
+
    
 
 
@@ -39,12 +40,6 @@ public class PlayarContrall : MonoBehaviour
         HelthVFX.Stop();
         BoosterVFX.Stop();
        
-       
-    
-      
-
-
-
 
     }//Start
 
@@ -148,13 +143,21 @@ public class PlayarContrall : MonoBehaviour
             states = Stats.TRANCENDING;
            
         }
-        if (other.gameObject.CompareTag("Ball"))
+        
+
+    }//OnTriggerEnter
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
         {
             _boostHelth -= 10;
         }
+        if (collision.gameObject.CompareTag("point"))
+        {
+            _boostHelth -= 10;
+        }
+    }
 
-    }//OnTriggerEnter
+    
 
-
-   
 }//Class
